@@ -1,0 +1,42 @@
+﻿@model IEnumerable<HospitalManagementProject.Models.receaptioninquery>
+
+@{
+    ViewBag.Title = "QueryList";
+}
+
+<h2>QueryList</h2>
+<h3 class="text-danger">@ViewBag.delete</h3>
+
+<table class="table table table-danger table-hover">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Gender
+        </th>
+        <th>
+            Query
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.r_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.r_gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.r_query)
+        </td>
+        <td>
+       
+            @Html.ActionLink("Delete", "Delete", new { id=item.r_id }, new {@class="btn btn-danger"})
+        </td>
+    </tr>
+}
+
+</table>

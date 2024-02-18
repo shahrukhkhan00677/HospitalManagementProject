@@ -1,0 +1,252 @@
+﻿@model HospitalManagementProject.Models.registration
+
+@{
+    ViewBag.Title = "Index";
+}
+@*Header*@
+<h1 class="text-center border-bottom border-2">Goverment<span class="text-primary">Hospital</span></h1>
+@*Slidebar *@
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel mt-2">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/Images/hospital photo.png" class="img-fluid d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="text-dark">Hospital</h5>
+                <p class="text-dark">Super specialty Doctor</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/Images/reciption.jpg" class=" img-fluid d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="text-dark">Second slide label</h5>
+                <p class="text-dark">Some representative placeholder content for the second slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/Images/hospital room.jpg" class=" img-fluid d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="text-dark">Third slide label</h5>
+                <p class="text-dark">Some representative placeholder content for the third slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/Images/cancer lab.jpg" class=" img-fluid d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="text-dark">Third slide label</h5>
+                <p class="text-dark">Some representative placeholder content for the third slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/Images/bloodlab.jpg" class=" img-fluid d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="text-dark">Third slide label</h5>
+                <p class="text-dark">Some representative placeholder content for the third slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/Images/OPERATION-THEATRES.jpg" class=" img-fluid d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="text-dark">Third slide label</h5>
+                <p class="text-dark">Some representative placeholder content for the third slide.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<div>
+<div class="container">
+    <div class="row">
+        <h1 data-aos="fade-down" data-offset="200" class="text-center mt-2" >Registration</h1>
+        <div  data-aos="fade-up" data-offset="200" class="col-sm-12 col-md-6 col-lg-6 col-12 border border-4 rounded-2 border-dark mt-5 ">
+            <h1 class="text-center" >Registration<span class="text-primary" >Form</span></h1>
+            <div id="divupdate" class="text-success fw-bold"> </div>
+            <div id="loder" style="display:none;"> <img src="~/Images/loader.gif" height="50" width="50"   /> </div>
+            <div>
+                @using (Ajax.BeginForm("Index", "Home",
+                    new AjaxOptions()
+                    {
+
+                        HttpMethod = "post",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "divupdate",
+                        LoadingElementId = "loder"
+
+                    }))
+                {
+                    <div class="form-horizontal">
+                       
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.r_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.r_name, new { htmlAttributes = new { @class = "form-control",@placeholder="Enter Patient Name" } })
+                                @Html.ValidationMessageFor(model => model.r_name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.r_Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.RadioButtonFor(model => model.r_Gender, "Male", new {@class= "form-check-input" })
+                                <label>Male</label>
+                                @Html.RadioButtonFor(model => model.r_Gender, "Female", new { @class = "form-check-input" })
+                                <label>Female</label>
+                                @Html.RadioButtonFor(model => model.r_Gender, "Other", new { @class = "form-check-input" })
+                                <label>Other</label>
+                                @Html.ValidationMessageFor(model => model.r_Gender, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.r_date, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.r_date, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.r_date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.r_city, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.r_city, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter City Name" } })
+                                @Html.ValidationMessageFor(model => model.r_city, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.r_contact, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.r_contact, new { htmlAttributes = new { @class = "form-control",@placeholder="Enter Mobile Number" } })
+                                @Html.ValidationMessageFor(model => model.r_contact, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10 mt-1">
+                                <input type="submit" value="Submit" class="btn btn-info" />
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+        <div data-aos="fade-left" data-offset="400" class="col-sm-12 col-md-6 col-lg-6 col-12 mt-5 ">
+            <img src="~/Images/Registration form.jpg" class="img-fluid p-2  border border-dark rounded-3 border-5 " />
+        </div>
+    </div>
+</div>
+    <div class="container mt-5">
+        <div class="row">
+            <h1 data-aos="fade-up" data-offset="200" class="text-center"><span class="border-5 border-bottom">Hospital<span class="text-primary">Facility</span></span></h1>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-12 mt-2">
+                <div class="card border border-dark border-2 " style="width: 18rem;">
+                    <img src="~/Images/Xray.jpeg" class="card-img-top" alt="X-Ray" />
+                    <div class="card-body">
+                        <p class="card-text">X-Ray</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-up-left" data-offset="200" class="col-sm-12 col-md-6 col-lg-4 col-12 mt-2">
+                <div class="card border border-dark border-2 " style="width: 18rem;">
+                    <img src="~/Images/blood1.jpg" class="card-img-top" alt="X-Ray" />
+                    <div class="card-body">
+                        <p class="card-text">Blood Donet</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-down-right" data-offset="200" class="col-sm-12 col-md-6 col-lg-4 col-12 mt-2">
+                <div class="card border border-dark border-2 " style="width: 18rem;">
+                    <img src="~/Images/doctor telescop.jpg" class="card-img-top" alt="X-Ray" />
+                    <div class="card-body">
+                        <p class="card-text">Doctor</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-down-left" data-offset="200"  class="col-sm-12 col-md-6 col-lg-4 col-12 mt-2">
+                <div class="card border border-dark border-2 " style="width: 18rem;">
+                    <img src="~/Images/medical-office.jpg" class="card-img-top" alt="X-Ray" />
+                    <div class="card-body">
+                        <p class="card-text">Medical</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="flip-left" data-offset="200" class="col-sm-12 col-md-6 col-lg-4 col-12 mt-2">
+                <div class="card border border-dark border-2 " style="width: 18rem;">
+                    <img src="~/Images/Surgical.jpg" class="card-img-top" alt="X-Ray" />
+                    <div class="card-body">
+                        <p class="card-text">OT</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="flip-right" data-offset="200" class="col-sm-12 col-md-6 col-lg-4 col-12 mt-2">
+                <div class="card border border-dark border-2 " style="width: 18rem;">
+                    <img src="~/Images/Physican.jpeg" class="card-img-top" alt="X-Ray" />
+                    <div class="card-body">
+                        <p class="card-text">Patient teatment</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="flip-up" data-offset="200" class="col-sm-12 col-md-6 col-lg-4 col-12 mt-2">
+                <div class="card border border-dark border-2 " style="width: 18rem;">
+                    <img src="~/Images/Emergency.jpeg" class="card-img-top" alt="X-Ray" />
+                    <div class="card-body">
+                        <p class="card-text">Emergency</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="zoom-in" data-offset="200" class="col-sm-12 col-md-6 col-lg-4 col-12 mt-2">
+                <div class="card border border-dark border-2 " style="width: 18rem;">
+                    <img src="~/Images/Nursing.jpeg" class="card-img-top" alt="X-Ray" />
+                    <div class="card-body">
+                        <p class="card-text">Nursing</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="zoom-in-down" data-offset="200" class="col-sm-12 col-md-6 col-lg-4 col-12 mt-2">
+                <div class="card border border-dark border-2 " style="width: 18rem;">
+                    <img src="~/Images/OPERATION-THEATRES.jpg" class="card-img-top" alt="X-Ray" />
+                    <div class="card-body">
+                        <p class="card-text">OT</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="zoom-out-left" data-offset="200" class="col-sm-12 col-md-6 col-lg-4 col-12 mt-2">
+                <div class="card border border-dark border-2 " style="width: 18rem;">
+                    <img src="~/Images/patient bed.jpg" class="card-img-top" alt="X-Ray" />
+                    <div class="card-body">
+                        <p class="card-text">Patient Bed</p>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" class="col-sm-12 col-md-6 col-lg-4 col-12 mt-2">
+                <div class="card border border-dark border-2 " style="width: 18rem;">
+                    <img src="~/Images/ecg.jpg" class="card-img-top" alt="X-Ray" />
+                    <div class="card-body">
+                        <p class="card-text">ECG</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
