@@ -35,6 +35,7 @@ namespace HospitalManagementProject.Controllers
             return View();
         }
 
+       
 
     }
 }
