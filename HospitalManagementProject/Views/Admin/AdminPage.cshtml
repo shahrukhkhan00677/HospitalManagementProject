@@ -2,6 +2,42 @@
 @{
     ViewBag.Title = "AdminPage";
 }
+<style>
+    #doctor{
+        height:40px;
+        width:100px;
+        overflow:hidden;
+        border:5px solid black;
+        padding:2px;
+        background-color:aqua;
+        text-decoration:none;
+        text-decoration-skip-ink:auto;
+        transition:3s;
+        transition-property:all;
+    }
+    #doctor:hover{
+        width:900px;
+        height:100px;
+        border:2px solid black
+    }
+    #patient {
+        height: 40px;
+        width: 100px;
+        overflow: hidden;
+        border: 5px solid black;
+        padding: 2px;
+        background-color: aqua;
+        text-decoration: none;
+        text-decoration-skip-ink: auto;
+        transition: 3s;
+        transition-property: all;
+    }
+    #patient:hover {
+        width: 900px;
+        height: 100px;
+        border: 2px solid black
+    }
+</style>
 
 <h2>AdminPage</h2>
 
@@ -68,6 +104,24 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-2 ">
+            <div id="doctor">
+                <h4>Doctor: <span style="font-size:15px; text-decoration:none"> A physician (American English), medical practitioner (British English), medical doctor, or simply doctor is a health professional who practices medicine, which is concerned with promoting, maintaining or restoring health through the study, diagnosis, prognosis and treatment of disease, injury, and other physical </span> </h4>
+            </div>
+            <div id="patient" class="mt-3">
+                <h4>Patient: <span style="font-size: 15px; text-decoration: none ">Theories used for patient teaching include the Health Belief Model, self-efficacy theory, locus of control theory, cognitive dissonance theory, diffusion theory, stress and coping theory, and adult learning theory. </span> </h4>
+            </div>
+
+        </div>
+           
+</div>
+
+
+
+
 
 <div class="container" >
     <div class="row">

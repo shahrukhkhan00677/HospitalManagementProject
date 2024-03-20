@@ -11,13 +11,14 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+            <h2 class="text-white border border-3 rounded-3 p-2  " >Hospital <span class="text-primary">Management</span></h2>
+@*            @Html.ActionLink("Hospital Management", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+*@            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
+                <ul class="navbar-nav flex-grow-1  ">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Doctor Login", "DoctorLogin", "Doctor", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Query", "Query", "Query", new { area = "" }, new { @class = "nav-link" })</li>
